@@ -85,16 +85,18 @@ function Home({
 
             <View style={showList? styles.showListContainer : styles.hideListContainer}>
                 <TouchableOpacity 
+                    style={styles.placeList}
                     onPress={()=>{setShowList(!showList)}} 
                 >
                     <Text>닫기</Text>
                 </TouchableOpacity>
 
                 <FlatList 
-                    ListEmptyComponent={<View><Text>장소가 없습니다.</Text></View>}
+                    ListEmptyComponent={<View style={styles.emptyList}><Text>장소가 없습니다.</Text></View>}
                     data={placeData}
                     renderItem={({ item }) => (
                         <TouchableOpacity 
+                            style={styles.placeList}
                             onPress={() => PressPlaceName(item.coordinate.latitude, item.coordinate.longitude)} >
                             <Text>{item.placeName}</Text>
                         </TouchableOpacity>

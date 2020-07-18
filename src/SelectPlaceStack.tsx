@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackParamList } from "./StackParamList";
 import { RouteProp } from "@react-navigation/native";
-import { Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, View, TouchableOpacity } from "react-native";
 import MapView, { Marker } from 'react-native-maps';
 import { styles } from './stylesheet';
 
