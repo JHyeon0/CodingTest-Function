@@ -1,16 +1,8 @@
 export type StackParamList = {
-    Home: {
-        key: string | undefined;
-        placeName: string | undefined;
-        latitude: number;
-        longitude: number;
-        canIAdd: boolean | undefined;
-    };
+    Home: undefined;
     SelectPlace: {
         latitude: number;
         longitude: number;
-        latitudeDelta: number;
-        longitudeDelta: number;
     }
     AddPlace: {
         latitude: number;

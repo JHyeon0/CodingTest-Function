@@ -13,9 +13,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
     },
     inputPlaceName:{
+        padding: 10,
+        margin: 10,
+    },
+    guideInput:{
         padding: 10,
         margin: 10,
     },
@@ -31,8 +34,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     hideListContainer: {
-        width: 0,
-        height: 0,
+        backgroundColor: 'white',
+        height: windowHeight*0.1,
     },
     emptyList: {
         marginTop: windowHeight*0.10,
@@ -67,23 +70,12 @@ const styles = StyleSheet.create({
         height: windowHeight*0.1,
     },
     cancelAddButton: {
-        backgroundColor: '#FFBBAC',
-        color: 'white',
-        padding: 10,
-        position: 'absolute',
-        top: '80%',
-        alignSelf: 'flex-end'
+        backgroundColor: 'white',
+        height: windowHeight*0.1,
     },
     addPlaceButton: {
         backgroundColor: '#FFBBAC',
-        color: 'white',
-        padding: 10,
-        width: windowWidth,
-        height: windowHeight*0.06,
-        bottom: 0,
-        position: 'absolute',
-        alignItems: 'center',
-        justifyContent: 'center',
+        height: windowHeight*0.1,
     },
     saveButton: {
         backgroundColor: '#FFBBAC',

@@ -3,18 +3,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParamList } from './StackParamList';
 import { RouteProp } from '@react-navigation/native';
 import { Center } from './CenterView';
-import { Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text, View } from 'react-native';
+import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import { usePlaceDataDispatch, PlaceData } from './GlobalProvider';
+import { styles } from './stylesheet';
 
-interface Coordinate{
-    latitude: number;
-    longitude: number;
-}
-interface placeData{
-    key: string;
-    placeName: string;
-    coordinate: Coordinate;
-}
+
 
 function AddPlace({
         navigation, 
@@ -24,16 +18,21 @@ function AddPlace({
         route: RouteProp<StackParamList, 'AddPlace'>;
     }) {
     
-    const [placeInfo, setPlaceInfo] = useState<placeData>()
+    const [newPlaceName, setNewPlaceName] = useState<string>('')
+
+    const disptach = usePlaceDataDispatch();
 
     const PressAdd = () => {
-        navigation.navigate('Home', {
-            key: '2',
-            latitude: route.params.latitude,
-            longitude: route.params.longitude,
-            placeName: 'New Place!',
-            canIAdd: true,
-        })
+        const newPlaceData:PlaceData = {
+            key: Date(),
+            placeName: newPlaceName,
+            coordinate:{
+                latitude: route.params.latitude,
+                longitude: route.params.longitude,
+            }
+        }
+        disptach({type:'Add', newPlaceData:newPlaceData})
+        navigation.navigate('Home')
     }
     
     const PressGoBack = () => {
@@ -41,16 +40,26 @@ function AddPlace({
     }
 
     return(
-        <Center>
-            <Text>{route.params.latitude}</Text>
-            <Text>{route.params.longitude}</Text>
-            <TouchableOpacity onPress={PressAdd} >
+        <View style={styles.container}>
+            <View >
+                <View style={styles.guideInput}>
+                    <Text>새로운 장소 이름을 정하세요.</Text>
+                </View>
+                <TextInput
+                    style={styles.inputPlaceName}
+                    placeholder='장소 이름'
+                    value={newPlaceName}
+                    onChangeText={newPlaceName=>setNewPlaceName(newPlaceName)}
+                >
+                </TextInput>
+            </View>
+            <TouchableOpacity style={styles.addPlaceButton} onPress={PressAdd} >
                 <Text>저장</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={PressGoBack} >
+            <TouchableOpacity style={styles.cancelAddButton}  onPress={PressGoBack} >
                 <Text>뒤로가기</Text>
             </TouchableOpacity>
-        </Center>
+        </View>
     )
 }
 

@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackParamList } from "./StackParamList";
 import { RouteProp } from "@react-navigation/native";
-import { Center } from "./CenterView";
 import { Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import MapView, { Marker } from 'react-native-maps';
 import { styles } from './stylesheet';
 
-interface locationData{
+interface Coordinate{
+    latitude: number;
+    longitude: number;
+}
+interface Region{
     latitude: number;
     longitude: number;
     latitudeDelta: number;
@@ -24,28 +27,27 @@ function SelectPlace({
     }) {
     
     //현재 위치
-    const [location, setLocation] = useState<locationData>({
+    const [coordinate, setCoordinate] = useState<Coordinate>({
+        latitude: route.params.latitude,
+        longitude: route.params.longitude,
+    });
+    //
+    const [region, setRegion] = useState<Region>({
         latitude: route.params.latitude,
         longitude: route.params.longitude,
         latitudeDelta: 0.015,
         longitudeDelta: 0.015,
-    });
+    })
 
     const PressAdd = () =>{
         navigation.navigate('AddPlace', {
-            latitude: location.latitude,
-            longitude: location.longitude,
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
         });
     }
 
     const PressGoBack = () =>{
-        navigation.navigate('Home', {
-            key: undefined,
-            placeName: undefined,
-            latitude: location.latitude,
-            longitude: location.longitude,
-            canIAdd: false,
-        })
+        navigation.navigate('Home');
     }
     
 
@@ -53,15 +55,25 @@ function SelectPlace({
         <View>
             <MapView
                 style={styles.mapStyle}
-                region={location}
+                region={region}
             >
+            <Marker 
+                draggable 
+                coordinate={coordinate} 
+                onDragEnd={(e) => setCoordinate(e.nativeEvent.coordinate) } 
+            />
             </MapView>
 
-            <Text>{route.params.latitude}</Text>
-            <TouchableOpacity onPress={PressAdd} >
+            <TouchableOpacity 
+                style={styles.addPlaceButton} 
+                onPress={PressAdd} 
+            >
                 <Text>추가</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.goBack()} >
+            <TouchableOpacity 
+                style={styles.cancelAddButton} 
+                onPress={() => navigation.goBack()} 
+            >
                 <Text>취소</Text>
             </TouchableOpacity>
         </View>
