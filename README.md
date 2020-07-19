@@ -7,3 +7,4 @@ functional component로 구현했습니다. State 관리에 있어 context를 �
 - react-navigation
 - react-navigation/stack
 - react-native-maps
+- moment
