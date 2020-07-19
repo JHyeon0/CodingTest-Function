@@ -1,4 +1,5 @@
 export type StackParamList = {
+    NewHome: undefined;
     Home: undefined;
     SelectPlace: {
         latitude: number;

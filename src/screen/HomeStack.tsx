@@ -104,7 +104,7 @@ function Home({
                 <Text>목록 열기</Text>
             </TouchableOpacity>
 
-            <View style={showList? styles.showListContainer : styles.hideListContainer}>
+            <View style={showList? styles.showListContainer : styles.hideContainer}>
                 <TouchableOpacity 
                     style={styles.placeList}
                     onPress={()=>{setShowList(!showList)}} 

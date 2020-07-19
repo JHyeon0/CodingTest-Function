@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    hideListContainer: {
+    hideContainer: {
         display: 'none'
     },
     emptyList: {

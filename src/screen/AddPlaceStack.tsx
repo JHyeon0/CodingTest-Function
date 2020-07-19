@@ -30,7 +30,7 @@ function AddPlace({
             }
         }
         disptach({type:'Add', newPlaceData:newPlaceData})
-        navigation.navigate('Home')
+        navigation.navigate('NewHome')
     }
 
     return(
