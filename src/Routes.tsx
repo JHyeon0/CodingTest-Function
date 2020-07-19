@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, Header } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StackParamList } from './StackParamList';
-import Home from './HomeStack';
-import SelectPlace from './SelectPlaceStack'
-import AddPlace from './AddPlaceStack'
-import { PlaceDataContextProvider } from './GlobalProvider'
+import Home from './screen/HomeStack';
+import SelectPlace from './screen/SelectPlaceStack'
+import AddPlace from './screen/AddPlaceStack'
+import { PlaceDataContextProvider } from './PlaceNameProvider'
 
 
 interface RoutesProps {}
@@ -22,6 +22,5 @@ export const Routes: React.FC<RoutesProps> = ({}) => {
                 </Stack.Navigator>
             </NavigationContainer>
         </PlaceDataContextProvider>
-
     )
 }

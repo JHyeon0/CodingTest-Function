@@ -1,7 +1,7 @@
 import React, {useReducer, createContext, Dispatch, useContext} from 'react';
 
 
-// 장소에 대한 정보이며, key에는 장소 정보를 등록한 현재 시간을 넣는다.
+// 장소에 타입이며, key에는 장소 정보를 등록한 현재 시간을 넣는다.
 export type PlaceData = {
     key: string;
     placeName: string;
@@ -10,7 +10,6 @@ export type PlaceData = {
         longitude: number;
     }
 };
-
 export type PlaceDataArray = PlaceData[]; 
 
 // PlaceDataArray에 접근하여 Read할 수 있다.
@@ -29,10 +28,10 @@ const placeDataDispatchContext = createContext<PlaceDataDispatch | undefined>(un
 //Action에 대한 기능 구현.
 function PlaceDataReducer(array: PlaceDataArray, action: Action): PlaceDataArray {
     switch (action.type) {
-        case "Add":
-            return array.concat(action.newPlaceData)
+        case "Add": 
+            return [action.newPlaceData].concat(array);    
         case 'Reverse':
-            return array.reverse()
+            return array.reverse();
         default:
             throw new Error('Action Error');
     }

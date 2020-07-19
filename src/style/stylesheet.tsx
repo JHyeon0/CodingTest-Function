@@ -7,12 +7,13 @@ const styles = StyleSheet.create({
 
     ////////////   General   ////////////
     mapStyle: {
+        position: 'relative',
         width: windowWidth,
-        height: windowHeight*0.8,
+        height: windowHeight,
     },
-    container: {
+    addPlaceContainer: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
     inputPlaceName:{
         padding: 10,
@@ -27,18 +28,19 @@ const styles = StyleSheet.create({
     showListContainer: {
         position: 'absolute',
         width: windowWidth,
-        height: windowHeight*0.3,
+        height: windowHeight*0.4,
         backgroundColor: 'white',
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center',
     },
     hideListContainer: {
-        backgroundColor: 'white',
-        height: windowHeight*0.1,
+        display: 'none'
     },
     emptyList: {
-        marginTop: windowHeight*0.10,
+        marginTop: windowHeight*0.15,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     placeList: {
         backgroundColor: 'white',
@@ -54,8 +56,13 @@ const styles = StyleSheet.create({
 
     ////////////   Button   ////////////
     openListButton: {
+        position: 'absolute',
+        bottom: 0,
+        width: windowWidth,
         backgroundColor: 'white',
-        height: windowHeight*0.1,
+        height: windowHeight*0.06,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     closeListButton: {
         backgroundColor: '#FFBBAC',
@@ -66,16 +73,34 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     addPlaceButton_Home: {
+        position: 'absolute',
+        bottom: '10%',
+        right: '7%',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#FFBBAC',
-        height: windowHeight*0.1,
+        padding: 10,
     },
     cancelAddButton: {
+        position: 'absolute',
+        bottom: '10%',
+        right: '7%',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: 'white',
-        height: windowHeight*0.1,
+        paddingVertical: 5,
+        paddingHorizontal: 50,
     },
     addPlaceButton: {
+        position: 'absolute',
+        bottom: '10%',
+        left: '7%',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: '#FFBBAC',
-        height: windowHeight*0.1,
+        padding: 10,
+        paddingVertical: 5,
+        paddingHorizontal: 50,
     },
     saveButton: {
         backgroundColor: '#FFBBAC',

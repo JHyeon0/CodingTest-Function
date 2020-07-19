@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { StackNavigationProp } from "@react-navigation/stack";
-import { StackParamList } from "./StackParamList";
+import { StackParamList } from "../StackParamList";
 import { RouteProp } from "@react-navigation/native";
 import { Text, View, TouchableOpacity } from "react-native";
 import MapView, { Marker } from 'react-native-maps';
-import { styles } from './stylesheet';
+import { styles } from '../style/stylesheet';
 
 interface Coordinate{
     latitude: number;
@@ -25,12 +25,12 @@ function SelectPlace({
         route: RouteProp<StackParamList, 'SelectPlace'>;
     }) {
     
-    //현재 위치
+    //현재 coordinate.
     const [coordinate, setCoordinate] = useState<Coordinate>({
         latitude: route.params.latitude,
         longitude: route.params.longitude,
     });
-    //
+    //현재 region.
     const [region, setRegion] = useState<Region>({
         latitude: route.params.latitude,
         longitude: route.params.longitude,
@@ -38,15 +38,12 @@ function SelectPlace({
         longitudeDelta: 0.015,
     })
 
+    //추가 버튼 누를 경우 화면 이동.
     const PressAdd = () =>{
         navigation.navigate('AddPlace', {
             latitude: coordinate.latitude,
             longitude: coordinate.longitude,
         });
-    }
-
-    const PressGoBack = () =>{
-        navigation.navigate('Home');
     }
     
 
@@ -56,11 +53,12 @@ function SelectPlace({
                 style={styles.mapStyle}
                 region={region}
             >
-            <Marker 
-                draggable 
-                coordinate={coordinate} 
-                onDragEnd={(e) => setCoordinate(e.nativeEvent.coordinate) } 
-            />
+                <Marker 
+                    draggable 
+                    coordinate={coordinate}
+                    pinColor={'green'}
+                    onDragEnd={(e) => setCoordinate(e.nativeEvent.coordinate) } 
+                />
             </MapView>
 
             <TouchableOpacity 
@@ -75,6 +73,7 @@ function SelectPlace({
             >
                 <Text>취소</Text>
             </TouchableOpacity>
+
         </View>
     )
 }
