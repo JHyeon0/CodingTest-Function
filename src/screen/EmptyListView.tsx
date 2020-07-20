@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text } from "react-native";
 import { styles } from "../style/stylesheet";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
-interface CenterProps {}
+type CenterProps = {}
 
 export const EmptyList: React.FC<CenterProps> = () => {
   return (

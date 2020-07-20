@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
+// 화면 가로, 세로에 대한
 const windowWidth:number = Dimensions.get("window").width;
 const windowHeight:number = Dimensions.get("window").height;
 
@@ -13,7 +14,6 @@ const styles = StyleSheet.create({
     },
     addPlaceContainer: {
         flex: 1,
-        justifyContent: 'space-between',
     },
     inputPlaceName:{
         padding: 10,
@@ -43,16 +43,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     placeList: {
+        flexDirection: 'row',
         backgroundColor: 'white',
         width: windowWidth,
         height: windowHeight*0.06,
         borderStyle: 'solid',
-        borderColor: 'rgb(230, 230, 230)',
-        borderBottomWidth: 1,
+        borderBottomWidth: 0.5,
+        borderBottomColor: 'rgb(200,200,00)',
+        paddingHorizontal: 20,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
-
 
     ////////////   Button   ////////////
     openListButton: {
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    addPlaceButton_Home: {
+    choosePlaceButton: {
         position: 'absolute',
         bottom: '10%',
         right: '7%',
@@ -80,11 +81,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#FFBBAC',
         padding: 10,
+        paddingHorizontal: 30,
     },
     cancelAddButton: {
         position: 'absolute',
         bottom: '10%',
-        right: '7%',
+        right: '5%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     addPlaceButton: {
         position: 'absolute',
         bottom: '10%',
-        left: '7%',
+        left: '5%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#FFBBAC',
@@ -113,18 +115,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    cancelSaveButton: {
-        backgroundColor: '#FFBBAC',
-        color: 'white',
-        padding: 10,
-        width: windowWidth,
-        height: windowHeight*0.2,
-        top: 0,
-        position: 'absolute',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-
 
  });
 

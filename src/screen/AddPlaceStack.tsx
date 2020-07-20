@@ -3,11 +3,13 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { StackParamList } from '../StackParamList';
 import { RouteProp } from '@react-navigation/native';
 import { Text, View, TouchableOpacity, TextInput } from 'react-native';
-import { usePlaceDataDispatch, PlaceData } from '../PlaceNameProvider';
+import { UsePlaceDataDispatch, PlaceData } from '../PlaceNameProvider';
 import { styles } from '../style/stylesheet';
 import moment from 'moment';
 
-
+/*
+  AddPlace Stack.Screen
+*/
 function AddPlace({
         navigation, 
         route
@@ -16,11 +18,14 @@ function AddPlace({
         route: RouteProp<StackParamList, 'AddPlace'>;
     }) {
     
+    // 사용자로부터 입력받을 장소 이름
     const [newPlaceName, setNewPlaceName] = useState<string>('')
 
-    const disptach = usePlaceDataDispatch();
+    // 장소 리스트 데이터에 허용된 action들로만 접근함.
+    const disptach = UsePlaceDataDispatch();
 
-    const PressAdd = () => {
+    // 새로운 PlaceData를 List에 추가, 'Home'으로 이동
+    const PressSave = () => {
         const newPlaceData:PlaceData = {
             key: moment().format(),
             placeName: newPlaceName,
@@ -30,9 +35,10 @@ function AddPlace({
             }
         }
         disptach({type:'Add', newPlaceData:newPlaceData})
-        navigation.navigate('NewHome')
+        navigation.navigate('Home')
     }
 
+    //Screen of AddPlaceStack
     return(
         <View style={styles.addPlaceContainer}>
             <View >
@@ -49,7 +55,7 @@ function AddPlace({
             </View>
             <TouchableOpacity
                 style={styles.saveButton} 
-                onPress={PressAdd} 
+                onPress={PressSave} 
             >
                 <Text>저장</Text>
             </TouchableOpacity>
